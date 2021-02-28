@@ -15,6 +15,11 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+MEDIA_ROOT = BASE_DIR
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -36,15 +41,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'polls',
-    'django_extensions',
+    # 'django_extensions',
     'rest_framework',
     'rest_framework.authtoken',
-    'debug_toolbar',
+    # 'debug_toolbar',
 
 ]
 
 MIDDLEWARE = [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -59,7 +64,7 @@ ROOT_URLCONF = 'poll_russia.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'polls'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,11 +123,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-MEDIA_ROOT = BASE_DIR
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
-ALLOWED_HOSTS = ['connects-macbook-pro-new.local', 'connects-macbook-pro-new.local:8888', '*']
+
+ALLOWED_HOSTS = ['*']
 
 INTERNAL_IPS = [
     'connects-macbook-pro-new.local',
